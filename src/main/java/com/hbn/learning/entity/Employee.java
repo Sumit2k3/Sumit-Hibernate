@@ -3,21 +3,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Transient;
 import lombok.Data;
-//import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import lombok.ToString;
-import lombok.AllArgsConstructor;
 
 
 
 @Data
-@AllArgsConstructor
 @RequiredArgsConstructor
-//@NoArgsConstructor
-@ToString(exclude="compName")
 @Entity(name = "Employee1")
 public class Employee {
 	
@@ -29,16 +23,13 @@ public class Employee {
 	private int salary;
 	
 	@OneToOne
+	@JoinColumn(name ="add_id")
 	private Address address;
-	
-	@Transient
-	private String compName;
 	
 	
 	public Employee(String name, String gender, int salary) {
 	    this.name = name;
 	    this.gender = gender;
 	    this.salary = salary;
-	}
-	
+	}	
 }
