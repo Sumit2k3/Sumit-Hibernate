@@ -3,9 +3,8 @@ package com.hbn.learning;
 import org.hibernate.Session;
 //import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.query.MutationQuery;
-import org.hibernate.query.Query;
 
+import com.hbn.learning.entity.Address;
 import com.hbn.learning.entity.Employee;
 
 
@@ -13,13 +12,27 @@ public class Main {
 
 	public static void main(String[] args) {
 		
+		Address add1 = new Address("Noida", "UP", 201301);
+		
 		Employee emp = new Employee();
+		emp.setName("Amit");
+		emp.setGender("Male");
+		emp.setSalary(80000);
+		emp.setAddress(add1);
+		
+		
 		
 		Session session = HibernateConfig.getSessionFactory().openSession();
 		Transaction transaction = session.beginTransaction();
 		
+//		session.persist(emp);
+//		session.persist(add1);
+//		
+//		transaction.commit();
 		
 		
-
+		
+		System.out.println(session.find(Employee.class, 1));
+		
 	}
 }
