@@ -1,11 +1,12 @@
 package com.hbn.learning.entity;
 import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
@@ -25,7 +26,7 @@ public class Employee {
 	private String name, gender;
 	private int salary;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "employee")
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Address> address;
 	
 	

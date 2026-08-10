@@ -13,32 +13,40 @@ public class Main {
 		
 		Address add1 = new Address("Noida", "UP", 201301);
 		Address add2 = new Address("Gzb", "UP", 201301);
-		Address add3 = new Address("Gurgaon", "UP", 201301);
+		Address add3 = new Address("Gurgaon", "HR", 201301);
 		Address add4 = new Address("Mumbai", "MH", 201301);
 		
-		List<Address> listOfAdd = new ArrayList<>();
-		listOfAdd.add(add1);
-		listOfAdd.add(add2);
-		listOfAdd.add(add3);
-		listOfAdd.add(add4);
-		
+		List<Address> amitAdd = new ArrayList<>();
+		amitAdd.add(add1);
+		amitAdd.add(add2);
+		amitAdd.add(add3);
+		amitAdd.add(add4);
 		
 		Employee emp = new Employee();
 		emp.setName("Amit");
 		emp.setGender("Male");
 		emp.setSalary(80000);
-		emp.setAddress(listOfAdd);
+		emp.setAddress(amitAdd);
 		
-		add1.setEmployee(emp);
-		add2.setEmployee(emp);
-		add3.setEmployee(emp);
-		add4.setEmployee(emp);
+		
+		// 2nd Employee
+		List<Address> sonuAdd = new ArrayList<>();
+		sonuAdd.add(add1);
+		sonuAdd.add(add2);
+		sonuAdd.add(add3);
+		
+		Employee emp1 = new Employee("Sonu", "Male", 70000);
+		emp1.setAddress(sonuAdd);	
+		
 		
 		
 		Session session = HibernateConfig.getSessionFactory().openSession();
 		Transaction transaction = session.beginTransaction();
 		
 		session.persist(emp);
+		session.persist(emp1);
+
+
 		
 		transaction.commit();
 		
@@ -46,9 +54,10 @@ public class Main {
 		System.out.println(employee);
 		System.out.println(employee.getAddress());
 		
-		Address address = session.find(Address.class, 3);
-		System.out.println(address);
-		System.out.println(address.getEmployee());
+		Employee employee1 = session.find(Employee.class, 2);
+		System.out.println(employee1);
+		System.out.println(employee1.getAddress());
+		
 		
 		
 	}
