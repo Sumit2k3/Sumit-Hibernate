@@ -8,11 +8,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
 
 
 @Data
 @RequiredArgsConstructor
+@ToString(exclude ="address")
 @Entity(name = "Employee1")
 public class Employee {
 	
@@ -23,7 +25,7 @@ public class Employee {
 	private String name, gender;
 	private int salary;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "employee")
 	private List<Address> address;
 	
 	

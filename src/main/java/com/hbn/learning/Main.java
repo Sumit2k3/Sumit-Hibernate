@@ -29,6 +29,11 @@ public class Main {
 		emp.setSalary(80000);
 		emp.setAddress(listOfAdd);
 		
+		add1.setEmployee(emp);
+		add2.setEmployee(emp);
+		add3.setEmployee(emp);
+		add4.setEmployee(emp);
+		
 		
 		Session session = HibernateConfig.getSessionFactory().openSession();
 		Transaction transaction = session.beginTransaction();
@@ -37,7 +42,13 @@ public class Main {
 		
 		transaction.commit();
 		
-		System.out.println(session.find(Employee.class, 1));
+		Employee employee = session.find(Employee.class, 1);
+		System.out.println(employee);
+		System.out.println(employee.getAddress());
+		
+		Address address = session.find(Address.class, 3);
+		System.out.println(address);
+		System.out.println(address.getEmployee());
 		
 		
 	}

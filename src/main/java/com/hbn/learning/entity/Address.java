@@ -3,9 +3,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -15,6 +17,7 @@ import lombok.Data;
 @Setter
 @AllArgsConstructor
 @RequiredArgsConstructor
+@ToString(exclude ="employee")
 @Entity
 public class Address {
 	
@@ -24,6 +27,9 @@ public class Address {
 	
 	private String city, state;
 	private int pinCode;
+	
+	@ManyToOne
+	private Employee employee;
 	
 	
 	public Address(String city, String state, int pinCode) {
