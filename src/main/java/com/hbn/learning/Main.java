@@ -59,6 +59,11 @@ public class Main {
 		System.out.println(employee1.getAddress());
 		
 		
+		Address address = session.find(Address.class, 1);
+		System.out.println(address);
+		System.out.println(address.getEmployee());
+		
+		
 		
 	}
 }
